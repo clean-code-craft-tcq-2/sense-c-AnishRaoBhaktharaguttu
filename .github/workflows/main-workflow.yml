@@ -8,9 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: build
-      run: g++ -Wall -Wextra -o testchecker *.c*
+      - name: build
+        uses: actions/checkout@v2
+      - run: gcc -c -o stats.o stats.c
+      - run: gcc -c -o alert.o alert.c
+      - run: g++ -c -o stats-test.o stats-test.cpp
+      - run: g++ -Wall -Wextra -o testchecker *.o
       
-    - name: run
-      run: ./testchecker
+      - name: run
+        run: ./testchecker
