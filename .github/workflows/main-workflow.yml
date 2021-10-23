@@ -10,7 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build
-      run: g++ -Wall -Wextra -o testchecker *.c*
+      run: gcc -c -o stats.o stats.c
+      run: gcc -c -o alert.o alert.c
+      run: g++ -c -o stats-test.o stats-test.cpp
+      run: g++ -Wall -Wextra -o testchecker *.o
       
     - name: run
       run: ./testchecker
