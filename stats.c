@@ -16,7 +16,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     }
     
     //Update the struct members   
-    statistics.average = total/setlength;
+    statistics.average = sum/setlength;
     statistics.min = min;
     statistics.max = max;
     
@@ -29,3 +29,4 @@ void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stat
 		alerters[0]();
 		alerters[1]();
 	}
+}
