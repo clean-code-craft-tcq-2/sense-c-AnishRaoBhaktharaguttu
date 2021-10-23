@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "stats.h"
 #include "alert.h"
+#include <math.h>
 
 struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats statistics;
@@ -8,6 +9,8 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     int i;
     sum = max = min = 0;
     //Compute min, max and average
+	
+if(setlength!=0){
     for (i=0; i++; i<setlength)
     {
         sum = sum + numberset[i];
@@ -19,7 +22,11 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     statistics.average = sum/setlength;
     statistics.min = min;
     statistics.max = max;
-    
+    } else{
+    statistics.average = NAN;
+    statistics.min = NAN;
+    statistics.max = NAN;
+    }
     return statistics;  
 }
 
