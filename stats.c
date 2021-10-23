@@ -5,17 +5,20 @@
 
 struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats statistics;
-    float min, max, sum;
     int i;
-    sum = max = min = 0;
+    float sum = 0.0, max = numberset[0], min = numberset[0];
     //Compute min, max and average
 	
 if(setlength!=0){
-    for (i=0; i++; i<setlength)
+    for (i=0; i<setlength; i++)
     {
-        sum = sum + numberset[i];
-        if(numberset[i] > max) max = numberset[i];
-        if(numberset[i] < min) min = numberset[i];
+        sum += numberset[i];
+        if(numberset[i] > max){
+		max = numberset[i];
+	}
+        if(numberset[i] < min){
+		min = numberset[i];
+	}
     }
     
     //Update the struct members   
